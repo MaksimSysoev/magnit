@@ -30,8 +30,6 @@ public class OperationWithXml {
                 File fXmlFile = new File("2.xml");
                 DocumentBuilder dBuilder = docFactory.newDocumentBuilder();
                 Document doc = dBuilder.parse(fXmlFile);
-                //optional, but recommended
-                //read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
                 doc.getDocumentElement().normalize();
                 NodeList nList = doc.getElementsByTagName("entry");
                 for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -64,7 +62,7 @@ public class OperationWithXml {
     public void createXml() throws Exception {
         try {
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-            //root elements
+            //root Entries
             Document doc = docBuilder.newDocument();
             Element rootElement = doc.createElement("entries");
             doc.appendChild(rootElement);
@@ -85,7 +83,6 @@ public class OperationWithXml {
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(new File("1.xml"));
             transformer.transform(source, result);
-
 
             this.transfromXmlFile();
 

@@ -11,6 +11,7 @@ import ru.magnit.app.model.Test;
 import ru.magnit.app.repository.FieldRepository;
 
 import javax.xml.parsers.ParserConfigurationException;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/fields")
@@ -25,9 +26,7 @@ public class FieldControl {
 
     @GetMapping("/{id}")
     public void create(@PathVariable int id) throws Exception {
-
         this.fields.deleteAll();
-
         for (int i = 0; i < id; i++) {
             Test test = new Test();
             test.setField(i);
